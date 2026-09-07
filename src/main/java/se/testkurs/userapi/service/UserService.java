@@ -34,7 +34,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User registerUser(String username, String email, String password) {
+    public User     registerUser(String username, String email, String password) {
         if (email == null || !EMAIL_PATTERN.matcher(email).matches()) {
             throw new InvalidEmailException("Ogiltigt email-format: " + email);
         }
