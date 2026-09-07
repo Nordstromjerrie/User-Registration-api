@@ -12,3 +12,9 @@ jobs:
 
       - name: Say hello
         run: echo "Hello from Github Actions!"
+
+      - name: Show current date and time
+        run: date
+
+      - name: List project files
+        run: ls -la
