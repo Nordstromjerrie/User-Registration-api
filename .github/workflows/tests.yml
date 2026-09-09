@@ -10,9 +10,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/setup-java@v4
+
+      - name: Set up Java
+        uses: actions/checkout@v4
         with:
           java-version: '21'
-          distribution: 'turmin'
+          distribution: 'temurin'
           cache: maven
+
       - name: Run tests
         run: mvn test
