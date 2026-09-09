@@ -164,9 +164,21 @@ class UserServiceTest {
         }
 
     @Test
-    void deleteUser_ShouldThrowException_WhenNoIdFound(){
+    void getUserById_ShouldThrowException_WhenNoIdFound(){
             when(userRepository.findById(null)).thenThrow(UserNotFoundException.class);
             assertThrows(UserNotFoundException.class, () -> userService.getUserById(null));
     }
 
+    @Test
+    void getUserById_shouldReturnUser_WhenIdIsFound(){
+        User user = new User(1L, "Jerran", "Test@test.com","password");
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        User result = userService.getUserById(1L);
+        assertEquals(user.getUsername(), result.getUsername());
+        assertEquals(user.getEmail(), result.getEmail());
+        assertEquals(user.getId(), result.getId());
+
+
+        assertEquals(user, result);
+    }
 }

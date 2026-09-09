@@ -48,7 +48,8 @@ public class UserService {
     }
 
     /** Aldre null-stil - anvands av flera Mockito-ovningar direkt. */
-    public User findUserByEmail(String email) {
+    public User findUserByEmail(String email)
+    {
         return userRepository.findByEmail(email).orElse(null);
     }
 
