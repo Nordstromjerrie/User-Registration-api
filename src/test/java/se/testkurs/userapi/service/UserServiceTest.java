@@ -159,7 +159,7 @@ class UserServiceTest {
             List <User> result = userService.getAllUsers();
             assertEquals(user, result.getFirst()); //Best praxis for assertEquals in this case
             assertEquals(user.getUsername(), result.getFirst().getUsername()); // Only test one field and leave to much
-            assertEquals("User{id=1, username='Jerran', email='test@Test.com'}", result.getFirst()); // Worst case. Does not follow "dont test implentation details" Hard codede strings is too sensitive and break easy.
+            assertEquals("User{id=1, username='Jerran', email='Test@Test.com'}", result.getFirst()); // Worst case. Does not follow "dont test implentation details" Hard codede strings is too sensitive and break easy.
             verify(userRepository).findAll();
         }
 
