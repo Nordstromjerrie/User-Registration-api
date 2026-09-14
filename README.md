@@ -288,3 +288,5 @@ De fristående TDD-övningarna — Calculator, StringUtils/Palindrome, DiscountC
 ## CI/CD
 
 Se `.github/workflows/README.md`. Under kursen bygger studenterna stegvis sina egna GitHub Actions-workflows i den mappen.
+
+Testar branch-villkor för deploy 
