@@ -2,7 +2,8 @@ name: Bygg, testa och villkora deploy
 
 on:
   push:
-  pull-request:
+  pull_request:
+
 
 
 jobs:
@@ -16,7 +17,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           java-version: '21'
-          distibution: 'temurin'
+          distribution: 'temurin'
 
       - name: Gör Maven wrapper körbar
         run: chmod +x ./mvnw
@@ -36,9 +37,9 @@ jobs:
           distribution: 'temurin'
 
       - name: Gör Maven Wrapper körbar
-        run: chmod +x ./mvwn
+        run: chmod +x ./mvnw
       - name: Kör tester
-        run: ./mvwn -B test
+        run: ./mvnw -B test
 
       - name: Ladda upp Surefire-rapporter
         if: always()
