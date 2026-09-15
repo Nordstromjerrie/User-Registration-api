@@ -11,9 +11,12 @@ jobs:
       - name: Set-up java
         uses: actions/setup-java@v5
         with:
-          version: '21'
+          java-version: '21'
           distribution: 'temurin'
+
+
+
       - name: make Maven wrapper runnable
-        run: chmod +x
+        run: chmod +x ./mvnw
       - name: Run java
         run: ./mvnw clean install
