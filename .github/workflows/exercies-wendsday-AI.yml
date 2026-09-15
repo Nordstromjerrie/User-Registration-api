@@ -31,5 +31,5 @@ jobs:
        uses: dorny/test-reporter@v3
        with:
          name: Maven tests
-         path: target/surefire-reports/*UserSericeDebugTest.xml
+         path: target/surefire-reports/*UserServiceDebugTest.xml
          reporter: java-junit
