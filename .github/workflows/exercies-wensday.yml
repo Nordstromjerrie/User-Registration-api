@@ -24,6 +24,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Sunfire-reports
+          name: Surefire-reports
           path: target/surefire-reports/
-          if-no-file: warn
+          if-no-files-found: warn
