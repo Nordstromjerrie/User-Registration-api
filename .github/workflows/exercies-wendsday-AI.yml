@@ -18,5 +18,17 @@ jobs:
 
     - name: Make maven wrapper runnable
       run: chmod +x ./mvnw
-    - name:
+    - name: Run Tests
       run: ./mvnw test
+    - name: Save tests result
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: surefire-reports
+        path: target/surefire-reports/
+    -  name: Easy to read error log
+       uses: dorny/test-reporter@v3
+       with:
+         name: Maven tests
+         path: target/surefire-reports/UserSericeDebugTest.xml
+         reporter: java-junit
