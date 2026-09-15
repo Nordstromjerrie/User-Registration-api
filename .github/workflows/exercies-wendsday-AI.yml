@@ -1,0 +1,15 @@
+name: Ai exercieses
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Fetch repository
+      uses: action/checkout@v4
+    - name: Make maven wrapper runnable
+      run: chmod +x ./mvnw
+    - name:
+      run: ./mvnw test
