@@ -9,6 +9,13 @@ jobs:
     steps:
     - name: Fetch repository
       uses: actions/checkout@v4
+
+    - name: set up java
+      uses: actions/setup-java@v5
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
     - name: Make maven wrapper runnable
       run: chmod +x ./mvnw
     - name:
