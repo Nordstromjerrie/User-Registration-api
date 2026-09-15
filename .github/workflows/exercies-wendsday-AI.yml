@@ -27,6 +27,7 @@ jobs:
         name: surefire-reports
         path: target/surefire-reports/
     -  name: Easy to read error log
+       if: always()
        uses: dorny/test-reporter@v3
        with:
          name: Maven tests
