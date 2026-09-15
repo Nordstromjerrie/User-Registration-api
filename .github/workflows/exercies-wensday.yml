@@ -20,6 +20,13 @@ jobs:
         run: chmod +x ./mvnw
       - name: Run java
         run: ./mvnw clean install
+      - name:
+        if: always()
+        uses: dorny/test-reporter@v2
+        with:
+          name: Maven tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@v4
