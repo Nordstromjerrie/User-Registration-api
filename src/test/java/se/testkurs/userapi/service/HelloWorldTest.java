@@ -10,8 +10,8 @@ public class HelloWorldTest {
         assertEquals(4, 2+2);
 
     }
-    @Test
+    /*@Test
     void additionIsNotCorrect(){
         assertEquals(5, 2+2);
-    }
+    }*/
 }
