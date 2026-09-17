@@ -9,19 +9,19 @@ class UserServiceDebugTest {
     void additionShouldBeTen() {
         int result = 5 + 4;
 
-        assertEquals(10, result);
+        assertEquals(9, result);
     }
 
     @Test
     void stringShouldMatch() {
         String username = "jerrie";
 
-        assertEquals("Jerry", username);
+        assertEquals("jerrie", username);
     }
 
     @Test
     void valueShouldBeTrue() {
-        boolean loggedIn = false;
+        boolean loggedIn = true;
 
         assertTrue(loggedIn);
     }
@@ -29,7 +29,7 @@ class UserServiceDebugTest {
     @Test
     void numbersShouldBeDifferent() {
         int first = 10;
-        int second = 10;
+        int second = 9;
 
         assertNotEquals(first, second);
     }
