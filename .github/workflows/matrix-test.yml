@@ -32,7 +32,7 @@ jobs:
        run: ./mvnw -B test
 
      - name: Show runner version
-       run: echo "Runner version is " ${{ matrix.os }}
+       run: echo "Runner version is " ${{ matrix.runner }}
 
      - name: Ladda upp Surefire-rapporter
        if: always()
