@@ -31,6 +31,8 @@ jobs:
      - name: Kör tester på ${{ matrix.runner }}
        run: ./mvnw -B test
 
+     - name: Show runner version
+       run: echo "Runner version is ':' " @${{ matrix.os }}
 
      - name: Ladda upp Surefire-rapporter
        if: always()
