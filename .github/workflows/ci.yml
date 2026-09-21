@@ -26,3 +26,10 @@ jobs:
 
       - name: kör tester
         run: ./mvnw -B test
+      - name: Spara tester som artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: target/surefire-reports/
+          if-no-files: warn
