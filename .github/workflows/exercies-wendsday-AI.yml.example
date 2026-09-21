@@ -1,0 +1,35 @@
+name: Ai exercieses
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Fetch repository
+      uses: actions/checkout@v4
+
+    - name: set up java
+      uses: actions/setup-java@v5
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    - name: Make maven wrapper runnable
+      run: chmod +x ./mvnw
+    - name: Run Tests
+      run: ./mvnw test
+    - name: Save tests result
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: surefire-reports
+        path: target/surefire-reports/
+    -  name: Easy to read error log
+       if: always()
+       uses: dorny/test-reporter@v3
+       with:
+         name: Maven tests
+         path: target/surefire-reports/*UserServiceDebugTest.xml
+         reporter: java-junit

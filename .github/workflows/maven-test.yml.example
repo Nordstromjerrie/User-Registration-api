@@ -1,0 +1,24 @@
+name: Maven test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Make Maven Wrapper executable
+        run: chmod +x ./mvnw
+
+      - name: Run tests with Maven Wrapper
+        run: ./mvnw test

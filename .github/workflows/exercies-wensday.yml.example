@@ -1,0 +1,36 @@
+name: Exercies-one
+
+on: push
+
+jobs:
+   exercises-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Excercies-One
+        uses: actions/checkout@v5
+      - name: Set-up java
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+
+
+      - name: make Maven wrapper runnable
+        run: chmod +x ./mvnw
+      - name: Run java
+        run: ./mvnw clean install
+      - name:
+        if: always()
+        uses: dorny/test-reporter@v2
+        with:
+          name: Maven tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+      - name: Save artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Surefire-reports
+          path: target/surefire-reports/
+          if-no-files-found: warn

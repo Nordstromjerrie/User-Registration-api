@@ -159,14 +159,26 @@ class UserServiceTest {
             List <User> result = userService.getAllUsers();
             assertEquals(user, result.getFirst()); //Best praxis for assertEquals in this case
             assertEquals(user.getUsername(), result.getFirst().getUsername()); // Only test one field and leave to much
-            assertEquals("User{id=1, username='Jerran', email='Test@Test.com'}", result.getFirst()); // Worst case. Does not follow "dont test implentation details" Hard codede strings is too sensitive and break easy.
+           // assertEquals("User{id=1L, username='Jerran', email='Test@test.com'}", result.getFirst()); // Worst case. Does not follow "dont test implentation details" Hard codede strings is too sensitive and break easy.
             verify(userRepository).findAll();
         }
 
     @Test
-    void deleteUser_ShouldThrowException_WhenNoIdFound(){
+    void getUserById_ShouldThrowException_WhenNoIdFound(){
             when(userRepository.findById(null)).thenThrow(UserNotFoundException.class);
             assertThrows(UserNotFoundException.class, () -> userService.getUserById(null));
     }
 
+    @Test
+    void getUserById_shouldReturnUser_WhenIdIsFound(){
+        User user = new User(1L, "Jerran", "Test@test.com","password");
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        User result = userService.getUserById(1L);
+        assertEquals(user.getUsername(), result.getUsername());
+        assertEquals(user.getEmail(), result.getEmail());
+        assertEquals(user.getId(), result.getId());
+
+
+        assertEquals(user, result);
+    }
 }
