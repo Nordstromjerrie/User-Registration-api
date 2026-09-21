@@ -1,0 +1,28 @@
+name: CI - user-registration-api
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Testa med java 21
+    runs-on: ubuntu-latest
+    steps:
+      - name: fetch repo
+        uses: actions/checkout@v4
+      - name: setup-java
+        uses: actions/setup-java@v5
+        with:
+          java-version: 21
+          distribution: 'temurin'
+          cache: maven
+      - name: make maven wrapper runnable
+        run: chmod +x ./mvnw
+
+      - name: kör tester
+        run: ./mvnw -B test
