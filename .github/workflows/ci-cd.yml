@@ -53,9 +53,9 @@ jobs:
         run: chmod +x ./mvnw
 
       - name: Run tests
-        run: ./mvwn -B test
+        run: ./mvnw -B test
       - name: Upload artifacts
-        uses: upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: target/surefire-reports/
@@ -79,5 +79,5 @@ jobs:
         run: |
           echo " All tests is approved on main" 
           echo " simulated deploy to staging" 
-          ls-lh deploy 
+          ls -lh deploy 
           echo " A real deploy would use the environment safe credentials"
