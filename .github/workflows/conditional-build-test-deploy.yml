@@ -2,7 +2,7 @@ name: Bygg, testa och villkora deploy
 
 on:
   push:
-      pull_request:
+  pull_request:
 
 
 
